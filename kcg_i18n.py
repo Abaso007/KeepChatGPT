@@ -61,9 +61,10 @@ def print_json(lang):
     print('{')
     print('    "index": %s,' % (json.dumps(lang['index'], ensure_ascii = False)))
     print('    "local": {')
-    lj = []
-    for country, langjson in lang['local'].items():
-        lj.append('"%s": %s' % (country, json.dumps(langjson, ensure_ascii = False)))
+    lj = [
+        '"%s": %s' % (country, json.dumps(langjson, ensure_ascii=False))
+        for country, langjson in lang['local'].items()
+    ]
     lj = ',\n'.join(lj)
     print(lj)
     print('    }')
